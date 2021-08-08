@@ -1,0 +1,24 @@
+.header{
+    display: flex;
+    align-items: center;
+    height: 10%;
+}
+
+.header a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.header .logo{
+    height: 3rem;
+}
+
+.header .titulo-grupo{
+    padding-left: 25px;
+}
+
+.header .titulo-grupo i{
+    padding-right: 5px;
+}
+  
