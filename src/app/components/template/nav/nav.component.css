@@ -1,12 +1,19 @@
-.sidenav {
-    background-color: #3F5185;
-    width: 10rem;
+.container {
+    height: 84%;
 }
 
-.nav-list a {
-    color: #FFF;
+i {
+    margin-right: 1rem;
 }
 
-.nav-list i {
-    padding-right: 1.5rem
+button {
+    margin: 1rem auto;
+}
+
+.mat-drawer.mat-drawer-side {
+    
+}
+
+.mat-list-item{
+    color: black !important;
 }
