@@ -12,6 +12,7 @@ export class AlertaComponent implements OnInit {
   alerta = {
   titulo : 'Sucesso!',
   descricao : 'Registro salvo com sucesso!',
+  mensagem: 'Registro salvo com sucesso!',
   btnSucesso : 'Ok',
   btnCancelar : 'Cancelar',
   btnCor : 'primary',
@@ -24,7 +25,8 @@ export class AlertaComponent implements OnInit {
   ngOnInit(): void {
     if (this.data) {
       this.alerta.titulo = this.data.titulo || this.alerta.titulo;
-      this.alerta.descricao = this.data.descricao || this.alerta.descricao;
+      this.alerta.mensagem = this.data.mensagem || this.alerta.mensagem;
+      this.alerta.descricao = this.data.descricao || this.alerta.descricao
       this.alerta.btnSucesso = this.data.btnSucesso || this.alerta.btnSucesso;
       this.alerta.btnCancelar = this.data.btnCancelar || this.alerta.btnCancelar;
       this.alerta.btnCor = this.data.btnCor || this.alerta.btnCor;

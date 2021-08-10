@@ -30,7 +30,8 @@ export class RoomListComponent implements AfterViewInit {
 
   dataSource = new MatTableDataSource<Room>(this.rooms);
 
-  constructor(public dialog: MatDialog, private roomServe: RoomService, private route: ActivatedRoute) { }
+  constructor(public dialog: MatDialog, private roomServe: RoomService, 
+    private route: ActivatedRoute, private router: Router) { }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -38,6 +39,10 @@ export class RoomListComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.room.id = this.route.snapshot.paramMap.get("id")!;
     this.listarTodos();
+  }
+
+  nevegarParaRoomCreate() {
+    this.router.navigate(["rooms/create"])
   }
 
   listarTodos(): void {
@@ -53,10 +58,11 @@ export class RoomListComponent implements AfterViewInit {
     })
   }
 
-  excluir(id: String): void {
+  excluir(row: Room): void {
     const config = {
       data: {
-        titulo: 'Exclusão', descricao: "Tem certeza que deseja excluir o registro? "+id,
+        titulo: 'Exclusão', mensagem: "Tem certeza que deseja excluir o registro? ",
+        descricao: row.id + " - " + row.name,
         possuirBtnFechar: true
       } as Alerta
     };
@@ -64,11 +70,13 @@ export class RoomListComponent implements AfterViewInit {
     const dialogRef = this.dialog.open(AlertaComponent, config);
     dialogRef.afterClosed().subscribe((opcao: boolean) => {
       if (opcao) {
-        this.roomServe.excluir(id);
-        this.listarTodos();
+        this.roomServe.excluir(row.id!).subscribe(() => {
+          this.listarTodos();
+          this.roomServe.mensagem('Registro excluido com sucesso!');
+        });
+
       }
     })
-
   }
 
 }
