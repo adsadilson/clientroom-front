@@ -13,10 +13,21 @@ export class RoomService {
 
   constructor(private http: HttpClient) { }
 
-  findAll(): Observable<Room[]> {
+  listarTodos(): Observable<Room[]> {
     const url = `${this.baseUrl}/rooms`;
     console.log(url);
     return this.http.get<Room[]>(url);
+  }
+
+  buscarPorId(id: String): Observable<Room> {
+    const url = `${this.baseUrl}/rooms/${id}`
+    return this.http.get<Room>(url);
+  }
+
+  excluir(id: String): Observable<void> {
+    const url = `${this.baseUrl}/rooms/${id}`
+    console.log("ID " + url);
+    return this.http.delete<void>(url);
   }
 
 }

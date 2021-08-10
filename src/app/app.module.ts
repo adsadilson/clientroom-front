@@ -12,6 +12,7 @@ import { NavComponent } from './components/template/nav/nav.component';
 import { HomeComponent } from './components/views/home/home.component';
 import { RoomListComponent } from './components/views/room-list/room-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AlertaComponent } from './shared/alerta/alerta.component';
 
 
 
@@ -23,9 +24,10 @@ import { HttpClientModule } from '@angular/common/http';
     NavComponent,
     HomeComponent,
     RoomListComponent,
-    
-    
-     ],
+    AlertaComponent,
+
+
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     HttpClientModule
   ],
+  entryComponents: [AlertaComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

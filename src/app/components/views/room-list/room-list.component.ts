@@ -1,8 +1,12 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Room } from 'src/app/domain/entity/Room';
 import { RoomService } from 'src/app/domain/service/room.service';
+import { AlertaComponent } from 'src/app/shared/alerta/alerta.component';
+import { Alerta } from 'src/app/shared/interface/alerta';
 
 @Component({
   selector: 'apss-room-list',
@@ -13,25 +17,60 @@ export class RoomListComponent implements AfterViewInit {
 
   rooms: Room[] = [];
 
-  displayedColumns: string[] = ['id', 'nome', 'data', 'inicio', 'fim', 'status'];
+  room: Room = {
+    id: '',
+    name: '',
+    date: '',
+    startHour: '',
+    endHour: '',
+    active: '',
+  }
+
+  displayedColumns: string[] = ['id', 'nome', 'data', 'inicio', 'fim', 'status', 'acao'];
 
   dataSource = new MatTableDataSource<Room>(this.rooms);
 
-  constructor(private roomServe: RoomService) { }
+  constructor(public dialog: MatDialog, private roomServe: RoomService, private route: ActivatedRoute) { }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
-    this.listRooms();
+    this.room.id = this.route.snapshot.paramMap.get("id")!;
+    this.listarTodos();
   }
 
-  listRooms(): void {
-    this.roomServe.findAll().subscribe((resposta) =>{
+  listarTodos(): void {
+    this.roomServe.listarTodos().subscribe((resposta) => {
       this.rooms = resposta;
       console.log(resposta);
     })
   }
+
+  buscarPorId(): void {
+    this.roomServe.buscarPorId(this.room.id!).subscribe((resposta) => {
+      this.room = resposta;
+    })
+  }
+
+  excluir(id: String): void {
+    const config = {
+      data: {
+        titulo: 'Exclusão', descricao: "Tem certeza que deseja excluir o registro? "+id,
+        possuirBtnFechar: true
+      } as Alerta
+    };
+
+    const dialogRef = this.dialog.open(AlertaComponent, config);
+    dialogRef.afterClosed().subscribe((opcao: boolean) => {
+      if (opcao) {
+        this.roomServe.excluir(id);
+        this.listarTodos();
+      }
+    })
+
+  }
+
 }
 
 

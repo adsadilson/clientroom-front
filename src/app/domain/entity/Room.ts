@@ -1,8 +1,8 @@
 export interface Room {
-    id?: String;
-    name: String;
-    date: Date;
-    startHour: String;
-    endHour: String;
-    active: boolean;
+    id?: string;
+    name: string;
+    date: string;
+    startHour: string;
+    endHour: string;
+    active: string;
 }
