@@ -2,6 +2,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Room } from 'src/app/domain/entity/Room';
+import { ValidarCamposService } from 'src/app/shared/validarCampos/validar-campos.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class RoomCreateComponent implements OnInit {
 
   formulario!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(public validacao: ValidarCamposService, private formBuilder: FormBuilder) { }
 
   get f() {
     return this.formulario.controls;
@@ -39,7 +40,7 @@ export class RoomCreateComponent implements OnInit {
     if (this.formulario.invalid) {
       return;
     }
-    //alert("Registro Salvo com sucesso!\n" + JSON.stringify(this.formRoom.value, null, 4))
+    alert("Registro Salvo com sucesso!\n" + JSON.stringify(this.formulario.value, null, 4))
   }
 
   reiniciarForm() {

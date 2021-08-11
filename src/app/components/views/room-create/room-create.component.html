@@ -6,8 +6,8 @@
         <mat-form-field class="full-width">
             <mat-label>Name *</mat-label>
             <input matInput name="name" formControlName="name" placeholder="Name the Room">
-            <mat-error *ngIf="(formulario.touched || formulario.dirty) && f.name.errors && f.name.errors.required">Campo obrigátorio</mat-error>
-            <mat-error *ngIf="formulario.controls['name'].hasError('minlength') || formulario.controls['name'].hasError('maxlength')">Campo dever ter no mínimo 4 e no máximo 80 caracters</mat-error>
+            <mat-error *ngIf="validacao.hasErrorValidar(f.name,'required')">Campo obrigátorio</mat-error>
+            <mat-error *ngIf="validacao.hasErrorValidar(f.name,'minlength') || validacao.hasErrorValidar(f.name,'maxlength')">Campo dever ter no mínimo 4 e no máximo 80 caracters</mat-error>
           </mat-form-field>
 
         <mat-form-field class="full-width">
@@ -16,21 +16,21 @@
                 (click)="picker.open()">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-            <mat-error *ngIf="(formulario.touched || formulario.dirty) && f.date.errors && f.date.errors.required">Campo obrigátorio</mat-error>
+            <mat-error *ngIf="validacao.hasErrorValidar(f.date,'required')">Campo obrigátorio</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
             <mat-label>Start Hour *</mat-label>
             <input matInput name="inicio" formControlName="startHour" placeholder="99:99">
-            <mat-error *ngIf="(formulario.touched || formulario.dirty) && f.startHour.errors && f.startHour.errors.required">Campo obrigátorio</mat-error>
-            <mat-error *ngIf="f.startHour.errors?.pattern">Formato valído 99:99</mat-error>
+            <mat-error *ngIf="validacao.hasErrorValidar(f.startHour,'required')">Campo obrigátorio</mat-error>
+            <mat-error *ngIf="validacao.hasErrorValidar(f.startHour,'pattern')">Formato valído 99:99</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
             <mat-label>End Hour *</mat-label>
             <input matInput name="fim" formControlName="endHour" placeholder="99:99">
-            <mat-error *ngIf="(formulario.touched || formulario.dirty) && f.endHour.errors && f.endHour.errors.required">Campo obrigátorio</mat-error>
-            <mat-error *ngIf="f.startHour.errors?.pattern">Formato valído 99:99</mat-error>
+            <mat-error *ngIf="validacao.hasErrorValidar(f.endHour,'pattern')">Campo obrigátorio</mat-error>
+            <mat-error *ngIf="validacao.hasErrorValidar(f.endHour,'pattern')">Formato valído 99:99</mat-error>
         </mat-form-field>
 
 
