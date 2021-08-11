@@ -1,40 +1,44 @@
 <div class="main-div">
 
-    <form autocomplete="off" (ngSubmit)="onSubmit()" (ngReset)="reiniciarForm()" [formGroup]="formRoom">
+    <form autocomplete="off" (ngSubmit)="onSubmit()" (ngReset)="reiniciarForm()" [formGroup]="cadastro">
         <h1>Create a new Room</h1>
 
         <mat-form-field class="full-width">
-            <mat-label>Name</mat-label>
+            <mat-label>Name *</mat-label>
             <input matInput name="name" formControlName="name" placeholder="Name the Room">
+            <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.name.errors && f.name.errors.required">Campo obrigátorio</mat-error>
+            <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.name.errors && f.name.errors.minLength">Campo dever ter no mínimo 4 e no máximo 80 caracters</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
-            <input matInput readonly placeholder="Date" name="controlName" formControlName="date"
+            <mat-label>Date *</mat-label>
+            <input matInput readonly placeholder="99/99/9999" [matDatepicker]="picker" name="controlName" formControlName="date"
                 (click)="picker.open()">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field class="full-width">
-            <mat-label>Start Hour</mat-label>
-            <input matInput name="inicio" formControlName="startHour" placeholder="Start Hour">
+            <mat-label>Start Hour *</mat-label>
+            <input matInput name="inicio" formControlName="startHour" placeholder="99:99">
         </mat-form-field>
 
         <mat-form-field class="full-width">
-            <mat-label>End Hour</mat-label>
-            <input matInput name="fim" formControlName="endHour" placeholder="End Hour">
+            <mat-label>End Hour *</mat-label>
+            <input matInput name="fim" formControlName="endHour" placeholder="99:99">
         </mat-form-field>
 
-        <mat-form-field class="full-width">
-            <mat-label>Status</mat-label>
-            <input matInput name="Status" formControlName="active" placeholder="Status">
-        </mat-form-field>
 
-        <div>
+        <section class="example-section">
+            <mat-checkbox color="primary"  formControlName="active">Status</mat-checkbox>
+        </section>
+
+
+        <div style="margin-top: 15px;">
             <button type="submit" mat-button class="mat-elevation-z8 btnSucesso" mat-raised-button>
                 <mat-icon>check</mat-icon> Save
             </button>
-            <button type="submit" color="warn" mat-button class="mat-elevation-z8 btnCancel" mat-raised-button>
+            <button type="reset" color="warn" mat-button class="mat-elevation-z8 btnCancel" mat-raised-button>
                 <mat-icon>cancel</mat-icon> Cancel
             </button>
         </div>
