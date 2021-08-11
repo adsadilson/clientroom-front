@@ -1,44 +1,46 @@
-<div class="container">
-    <form>
-        <h1>Criando uma nova room</h1>
-    
-        <mat-form-field class="form">
-            <mat-label>Nome</mat-label>
-            <input matInput  type="text" name="nome" placeholder="Ex. Compuntação">
-        </mat-form-field>
-    
-        <mat-form-field class="form">
-            <mat-label>Data</mat-label>
-            <textarea matInput type="text" name="date"
-                placeholder="Ex. Livros de Compuntação"></textarea>
+<div class="main-div">
+
+    <form autocomplete="off" (ngSubmit)="onSubmit()" (ngReset)="reiniciarForm()" [formGroup]="formRoom">
+        <h1>Create a new Room</h1>
+
+        <mat-form-field class="full-width">
+            <mat-label>Name</mat-label>
+            <input matInput name="name" formControlName="name" placeholder="Name the Room">
         </mat-form-field>
 
-        <mat-form-field class="form">
-            <mat-label>Inicio</mat-label>
-            <textarea matInput type="text" name="inicio"
-                placeholder="Ex. Livros de Compuntação"></textarea>
+        <mat-form-field class="full-width">
+            <input matInput readonly placeholder="Date" name="controlName" formControlName="date"
+                (click)="picker.open()">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-        <mat-form-field class="form">
-            <mat-label>Fim</mat-label>
-            <textarea matInput type="text" name="fim"
-                placeholder="Ex. Livros de Compuntação"></textarea>
+        <mat-form-field class="full-width">
+            <mat-label>Start Hour</mat-label>
+            <input matInput name="inicio" formControlName="startHour" placeholder="Start Hour">
         </mat-form-field>
 
-        <mat-form-field class="form">
+        <mat-form-field class="full-width">
+            <mat-label>End Hour</mat-label>
+            <input matInput name="fim" formControlName="endHour" placeholder="End Hour">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
             <mat-label>Status</mat-label>
-            <textarea matInput type="text" name="status"
-                placeholder="Ex. Livros de Compuntação"></textarea>
+            <input matInput name="Status" formControlName="active" placeholder="Status">
         </mat-form-field>
-    
-        <div class="buttons">
-            <button  class="save mat-elevation-z8" mat-stroked-button>
-                <mat-icon>check</mat-icon>
-                SALVAR
+
+        <div>
+            <button type="submit" mat-button class="mat-elevation-z8 btnSucesso" mat-raised-button>
+                <mat-icon>check</mat-icon> Save
             </button>
-            <button  class="mat-elevation-z8" color="warn" mat-stroked-button>
-                <mat-icon>delete</mat-icon> CANCELAR</button>
+            <button type="submit" color="warn" mat-button class="mat-elevation-z8 btnCancel" mat-raised-button>
+                <mat-icon>cancel</mat-icon> Cancel
+            </button>
         </div>
-    
+
     </form>
+
+
+
 </div>

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +18,7 @@ import { RoomCreateComponent } from './components/views/room-create/room-create.
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,16 +28,16 @@ import { RoomCreateComponent } from './components/views/room-create/room-create.
     HomeComponent,
     RoomListComponent,
     AlertaComponent,
-    RoomCreateComponent,
-
-
+    RoomCreateComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    FormsModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   entryComponents: [AlertaComponent],
   providers: [],
