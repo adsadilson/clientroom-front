@@ -13,8 +13,10 @@ import { NavComponent } from './components/template/nav/nav.component';
 import { HomeComponent } from './components/views/home/home.component';
 import { RoomListComponent } from './components/views/room-list/room-list.component';
 import { MaterialModule } from './shared/material/material-modulo';
-import { AlertaComponent } from './shared/alerta/alerta.component';
+import { AlertaComponent } from './shared/components/alerta/alerta.component';
 import { RoomCreateComponent } from './components/views/room-create/room-create.component';
+import { CamposModule } from './shared/components/campos/campos.module';
+
 
 
 
@@ -28,7 +30,7 @@ import { RoomCreateComponent } from './components/views/room-create/room-create.
     HomeComponent,
     RoomListComponent,
     AlertaComponent,
-    RoomCreateComponent
+    RoomCreateComponent   
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { RoomCreateComponent } from './components/views/room-create/room-create.
     AppRoutingModule,
     MaterialModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CamposModule
   ],
   entryComponents: [AlertaComponent],
   providers: [],

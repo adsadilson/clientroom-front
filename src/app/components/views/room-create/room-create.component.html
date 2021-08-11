@@ -3,17 +3,12 @@
     <form autocomplete="off" (ngSubmit)="onSubmit()" (ngReset)="reiniciarForm()" [formGroup]="formulario">
         <h1>Create a new Room</h1>
 
-        <mat-form-field class="full-width">
-            <mat-label>Name *</mat-label>
-            <input matInput name="name" formControlName="name" placeholder="Name the Room">
-            <mat-error *ngIf="validacao.hasErrorValidar(f.name,'required')">Campo obrigátorio</mat-error>
-            <mat-error *ngIf="validacao.hasErrorValidar(f.name,'minlength') || validacao.hasErrorValidar(f.name,'maxlength')">Campo dever ter no mínimo 4 e no máximo 80 caracters</mat-error>
-          </mat-form-field>
+        <apss-input-text titulo="Name *" controlName="name" [formGroup]="formulario"></apss-input-text>
 
         <mat-form-field class="full-width">
             <mat-label>Date *</mat-label>
-            <input matInput readonly placeholder="99/99/9999" [matDatepicker]="picker" name="controlName" formControlName="date"
-                (click)="picker.open()">
+            <input matInput readonly placeholder="99/99/9999" [matDatepicker]="picker" name="controlName"
+                formControlName="date" (click)="picker.open()">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             <mat-error *ngIf="validacao.hasErrorValidar(f.date,'required')">Campo obrigátorio</mat-error>
@@ -29,13 +24,13 @@
         <mat-form-field class="full-width">
             <mat-label>End Hour *</mat-label>
             <input matInput name="fim" formControlName="endHour" placeholder="99:99">
-            <mat-error *ngIf="validacao.hasErrorValidar(f.endHour,'pattern')">Campo obrigátorio</mat-error>
+            <mat-error *ngIf="validacao.hasErrorValidar(f.endHour,'required')">Campo obrigátorio</mat-error>
             <mat-error *ngIf="validacao.hasErrorValidar(f.endHour,'pattern')">Formato valído 99:99</mat-error>
         </mat-form-field>
 
 
         <section class="example-section">
-            <mat-checkbox color="primary"  formControlName="active">Status</mat-checkbox>
+            <mat-checkbox color="primary" formControlName="active">Status</mat-checkbox>
         </section>
 
 

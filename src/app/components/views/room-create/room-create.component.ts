@@ -30,7 +30,7 @@ export class RoomCreateComponent implements OnInit {
       name: [room.name, [Validators.required, Validators.minLength(4), Validators.maxLength(80)]],
       date: [room.date, Validators.required],
       startHour: [room.startHour, [Validators.required, Validators.pattern(/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/)]],
-      endHour: [room.endHour, Validators.required],
+      endHour: [room.endHour, [Validators.required, Validators.pattern(/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/)]],
       active: [room.active, Validators.required]
     })
   }
