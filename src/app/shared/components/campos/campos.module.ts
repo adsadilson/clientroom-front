@@ -2,11 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputTextComponent } from './input-text/input-text.component';
 import { InputDateComponent } from './input-date/input-date.component';
-import { InputNumberComponent } from './input-number/input-number.component';
-import { InputTextareaComponent } from './input-textarea/input-textarea.component';
 import { InputSelectComponent } from './input-select/input-select.component';
 import { MaterialModule } from '../../material/material-modulo';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InputHoraStartComponent } from './input-hora-start/input-hora-start.component';
 
 
 
@@ -14,9 +13,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     InputTextComponent,
     InputDateComponent,
-    InputNumberComponent,
-    InputTextareaComponent,
-    InputSelectComponent
+    InputSelectComponent,
+    InputHoraStartComponent,
+   
   ],
   imports: [
     CommonModule,
@@ -28,8 +27,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   exports: [
     InputTextComponent,
     InputDateComponent,
-    InputNumberComponent,
-    InputTextareaComponent,
     InputSelectComponent
   ]
 })

@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { ValidarCamposService } from 'src/app/shared/validarCampos/validar-campos.service';
 
 @Component({
-  selector: 'apss-input-textarea',
-  templateUrl: './input-textarea.component.html',
-  styleUrls: ['./input-textarea.component.css']
+  selector: 'apss-input-hora-start',
+  templateUrl: './input-hora-start.component.html',
+  styleUrls: ['./input-hora-start.component.css']
 })
-export class InputTextareaComponent  {
+export class InputHoraStartComponent  {
 
   @Input() formGroup!: FormGroup;
   @Input() titulo!: string;
