@@ -16,18 +16,27 @@ export class RoomService {
 
   listarTodos(): Observable<Room[]> {
     const url = `${this.baseUrl}/rooms`;
-    console.log(url);
     return this.http.get<Room[]>(url);
   }
 
   buscarPorId(id: String): Observable<Room> {
-    const url = `${this.baseUrl}/rooms/${id}`
+    const url = `${this.baseUrl}/rooms/${id}`;
     return this.http.get<Room>(url);
   }
 
   excluir(id: String): Observable<void> {
-    const url = `${this.baseUrl}/rooms/${id}`
+    const url = `${this.baseUrl}/rooms/${id}`;
     return this.http.delete<void>(url);
+  }
+
+  salvar(room: Room): Observable<Room> {
+    const url = `${this.baseUrl}/rooms`;
+    return this.http.post<Room>(url, room);
+  }
+
+  atualizar(room: Room): Observable<Room> {
+    const url = `${this.baseUrl}/rooms`;
+    return this.http.put<Room>(url, room);
   }
 
   mensagem(str: String) {

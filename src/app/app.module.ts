@@ -30,7 +30,8 @@ import { CamposModule } from './shared/components/campos/campos.module';
     HomeComponent,
     RoomListComponent,
     AlertaComponent,
-    RoomCreateComponent   
+    RoomCreateComponent,
+     
   ],
   imports: [
     BrowserModule,

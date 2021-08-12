@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Room } from 'src/app/domain/entity/Room';
 import { RoomService } from 'src/app/domain/service/room.service';
 import { AlertaComponent } from 'src/app/shared/components/alerta/alerta.component';

@@ -7,8 +7,13 @@
         <apss-input-date titulo="Data *" controlName="date" [formGroup]="formulario">
         </apss-input-date>
 
-        <apss-hora-start titulo="Start Hour" controlName="startHour" [formGroup]="formulario" ></apss-hora-start>      
-
+         
+        <mat-form-field class="full-width">
+            <mat-label>Start Hour *</mat-label>
+            <input matInput name="Inicio" formControlName="startHour" placeholder="99:99">
+            <mat-error *ngIf="validacao.hasErrorValidar(f.endHour,'required')">Campo obrigátorio</mat-error>
+            <mat-error *ngIf="validacao.hasErrorValidar(f.endHour,'pattern')">Formato valído 99:99</mat-error>
+        </mat-form-field>
 
         
 

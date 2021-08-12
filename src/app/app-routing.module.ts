@@ -16,6 +16,10 @@ const routes: Routes = [
   {
     path:'rooms/create',
     component: RoomCreateComponent
+  },
+  {
+    path:'rooms/create/:id',
+    component: RoomCreateComponent
   }
 ];
 
