@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { ValidarCamposService } from 'src/app/shared/validarCampos/validar-campos.service';
-import { CamposModule } from '../campos.module';
+
 
 @Component({
   selector: 'apss-input-text',

@@ -3,16 +3,9 @@
     <form autocomplete="off" (ngSubmit)="onSubmit()" (ngReset)="reiniciarForm()" [formGroup]="formulario">
         <h1>Create a new Room</h1>
 
-        <apss-input-text titulo="Name *" controlName="name" [formGroup]="formulario"></apss-input-text>
-
-        <mat-form-field class="full-width">
-            <mat-label>Date *</mat-label>
-            <input matInput readonly placeholder="99/99/9999" [matDatepicker]="picker" name="controlName"
-                formControlName="date" (click)="picker.open()">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-            <mat-error *ngIf="validacao.hasErrorValidar(f.date,'required')">Campo obrigátorio</mat-error>
-        </mat-form-field>
+        <apss-input-text titulo="Ex. Sala Java EE" controlName="name" [formGroup]="formulario"></apss-input-text>
+        <apss-input-date titulo="Data *" placeholder="99/99/9999" controlName="date" [formGroup]="formulario">
+        </apss-input-date>
 
         <mat-form-field class="full-width">
             <mat-label>Start Hour *</mat-label>
